@@ -1,5 +1,3 @@
 # Open-Source-Test-System
 
-# This is a fully open-source project 
-## That is free to use and redistribute but not to sell.
-S
+**This is a fully open-source system that is free-to-use and to redistribute, make changes, etc.. but not to sell.**
