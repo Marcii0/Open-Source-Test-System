@@ -103,7 +103,7 @@ namespace WindowsFormsApp1
             form.ShowDialog();
         }
 
-        async private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             login();
             button1.Enabled = false;

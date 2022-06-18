@@ -14,3 +14,4 @@ C:\Users\kadar\Documents\GitHub\Open-Source-Test-System\TeacherClient\WindowsFor
 C:\Users\kadar\Documents\GitHub\Open-Source-Test-System\TeacherClient\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\kadar\Documents\GitHub\Open-Source-Test-System\TeacherClient\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3.resources
 C:\Users\kadar\Documents\GitHub\Open-Source-Test-System\TeacherClient\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\kadar\Documents\GitHub\Open-Source-Test-System\TeacherClient\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.UserControl1.resources

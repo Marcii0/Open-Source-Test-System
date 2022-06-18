@@ -16,28 +16,8 @@ if ($result->num_rows > 0)
     $o = 0;
     while ($row = $result->fetch_array())
     {
-        $o++;
-        $i = 0;
-        $pogrow=mysqli_query($conn, "SELECT * FROM testquestions WHERE testid=".$row['testid']."");
-        echo "'" . $row['testid'] . "'" . ": {";
-        while ($_ROW = $pogrow->fetch_array()){
-            if ($i != $pogrow->num_rows) {  
-            echo $_ROW['taskid'] . " : " . $_ROW['question'] . ",";
-            $i++;
-            }
-                        
-            else 
-            {
-            echo $_ROW['taskid'] . " : " . $_ROW['question'];
-            } 
-        }
-        if ($o < $result->num_rows){
-            echo "},";
+        echo "{ID : ".$row['testid'].",\nTest Name: ".$row['testname'].",\nNumberOfTasks: ".$row['numberoftasks']."}";
     }
-    else{
-        echo "}";
-    }
-}
 }
 
 ?>

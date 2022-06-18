@@ -40,15 +40,26 @@ namespace WindowsFormsApp1
             var data = new FormUrlEncodedContent(values);
             var response = await client.PostAsync(getTestsURL, data);
             var resstring = response.Content.ReadAsStringAsync().Result;
-            var responsejson = JsonConvert.SerializeObject(resstring.ToString().Trim('"'));
-            JSONREQS.
-            if (responsejson == null)
-                MessageBox.Show("You don't have any Tests, don't forget to make one to stop getting this popup.");
-            else
+            resstring = resstring.Replace("{", "").Replace("{","");
+            string[] l = resstring.Split(',');
+            List<string> k = new List<string>();
+            List<string> v = new List<string>();
+            foreach (var item in l)
             {
-                MessageBox.Show(responsejson.ToString());
-                Console.WriteLine(responsejson.ToString());
+                k.Add(item.Split(':')[0]);
+                v.Add(item.Split(':')[1]);
             }
+
+
+            foreach (string item in k.ToArray())
+            {
+                Console.WriteLine(item);
+            }
+            foreach (string item in v.ToArray())
+            {
+                Console.WriteLine(item);
+            }
+            MessageBox.Show(resstring.Replace("\\n", "\n"));
             
         }
     }
