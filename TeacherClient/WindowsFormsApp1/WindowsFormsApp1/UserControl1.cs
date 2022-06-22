@@ -56,11 +56,14 @@ namespace WindowsFormsApp1
         {
             var values = new Dictionary<string, string>
             {
-            { "password", TeacherPassword },
-            { "testid", Testid }
+            { "password", teacherpassword },
+            { "testid", testid }
             };
             var data = new FormUrlEncodedContent(values);
             var response = await client.PostAsync(deletetestURL, data);
+            Console.WriteLine(teacherpassword);
+            Console.WriteLine(testid);
+            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
         }
     }
 }

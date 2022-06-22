@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using System.Windows.Forms;
 using System.Net;
 using JSONREQS;
@@ -22,16 +23,19 @@ namespace WindowsFormsApp1
     {
         string teachername = "";
         string teacherid = "";
-        public Form3(string _teachername, string _teacherid)
+        string teacherpassword = "";
+        public Form3(string _teachername, string _teacherid, string _teacherpassword)
         {
             InitializeComponent();
             teachername = _teachername;
             teacherid = _teacherid;
+            teacherpassword = _teacherpassword;
         }
         string getTestsURL = "http://localhost:80/GETTESTS.php";
         readonly HttpClient client = new HttpClient();
         private async void Form3_Load(object sender, EventArgs e)
         {
+            Console.WriteLine(teacherpassword);
             var values = new Dictionary<string, string>
             {
                 {"teachername", teachername },
@@ -40,26 +44,25 @@ namespace WindowsFormsApp1
             var data = new FormUrlEncodedContent(values);
             var response = await client.PostAsync(getTestsURL, data);
             var resstring = response.Content.ReadAsStringAsync().Result;
-            resstring = resstring.Replace("{", "").Replace("{","");
-            string[] l = resstring.Split(',');
-            List<string> k = new List<string>();
-            List<string> v = new List<string>();
-            foreach (var item in l)
+            Console.WriteLine(resstring);
+            
+            JObject json = JObject.Parse(resstring);
+            UserControl1 userControl = new UserControl1();
+            foreach (var ea in json)
             {
-                k.Add(item.Split(':')[0]);
-                v.Add(item.Split(':')[1]);
+                if (ea.Key == "testname")
+                    userControl.Name = ea.Value.ToString();
+                if (ea.Key == "testid")
+                    userControl.Testid = ea.Value.ToString();
+                if (ea.Key == "teacherid")
+                    userControl.TeacherPassword = teacherpassword;
+                if (ea.Key == "numberoftasks")
+                    userControl.NumberofTasks = ea.Value.ToString();
+                    flowLayoutPanel1.Controls.Add(userControl);
             }
-
-
-            foreach (string item in k.ToArray())
-            {
-                Console.WriteLine(item);
-            }
-            foreach (string item in v.ToArray())
-            {
-                Console.WriteLine(item);
-            }
-            MessageBox.Show(resstring.Replace("\\n", "\n"));
+            
+            
+            
             
         }
     }

@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             textBox2.GotFocus += TextBox2_GotFocus;
             textBox2.LostFocus += TextBox2_LostFocus;
         }
-
+        
         async void login()
         {
             if (textBox1.Text.Length > 0 && textBox2.Text.Length > 0)
@@ -58,7 +58,6 @@ namespace WindowsFormsApp1
                 credentials.Add("username", Regex.Split(resstring, "\n")[0]);
                 credentials.Add("password", Regex.Split(resstring, "\n")[1]);
                 credentials.Add("teacherid", Regex.Split(resstring, "\n")[2]);
-                MessageBox.Show("Teacher NAME | "+credentials["username"]+"\n Teacher PASSWORD | "+credentials["password"]+"\n Teacher ID | "+credentials["teacherid"]);
                 finalizeLogin();
             }
             else
@@ -68,7 +67,7 @@ namespace WindowsFormsApp1
 
         void finalizeLogin()
         {
-            Form3 _finalizeLogin = new Form3(credentials["username"], credentials["teacherid"]);
+            Form3 _finalizeLogin = new Form3(credentials["username"], credentials["teacherid"], credentials["password"]);
             _finalizeLogin.Show();
         }
 
